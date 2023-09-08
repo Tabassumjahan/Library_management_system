@@ -1,0 +1,52 @@
+/* BookList.css */
+.BookList {
+    margin: 20px;
+}
+
+.BookList table {
+    
+    border-collapse: collapse;
+    width: 100%;
+    border-Spacing: '0px 15px'
+
+
+}
+.table-container {
+    display: flex;
+    justify-content: center;
+}
+
+.custom-table {
+    border-collapse: collapse;
+    width: 80%;
+    /* Adjust the width as needed */
+}
+
+th,
+td {
+    padding: 10px;
+    /* Add padding to cells */
+    text-align: center;
+    /* Center-align text within cells */
+    border: 1px solid #ddd;
+    /* Optional border for cells */
+}
+.BookList th,
+.BookList td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #5e4747;
+}
+
+.BookList th {
+    background-color: #353b5c;
+    text-align: center;
+    padding: 15px;
+    border-bottom: 2px solid #ddd;
+    margin-right: 10px;
+}
+
+.space-after-search {
+    margin-top: 40px;
+    /* Adjust the margin-top value as needed for the desired space */
+}

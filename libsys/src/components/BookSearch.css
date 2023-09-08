@@ -1,0 +1,31 @@
+/* BookSearch.css */
+
+.book-search {
+    float: right;
+    /* Align to the right */
+    margin-top: 10px;
+    /* Add margin at the top to separate it from the heading */
+}
+
+.book-search form {
+    display: flex;
+    align-items: center;
+}
+
+.book-search input {
+    padding: 5px;
+}
+
+.book-search button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.book-search button:hover {
+    background-color: #0056b3;
+}

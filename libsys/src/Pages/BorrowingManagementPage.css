@@ -1,0 +1,56 @@
+/* BorrowingManagementPage.css */
+
+.borrowing-management {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.page-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.lists-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.list {
+    flex-basis: 48%;
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.borrowings-list {
+    margin-top: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Add more styles as needed */

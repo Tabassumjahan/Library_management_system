@@ -1,0 +1,14 @@
+/* UserManagementPage.css */
+.user-list {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #4c6c82;
+}
+
+.user-item {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #0b0505;
+    background-color: #fff;
+}

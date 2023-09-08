@@ -1,0 +1,93 @@
+/* BookManagementPage.css */
+
+/* Container for book management */
+.book-management-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+/* Book list styles */
+.book-list {
+    width: 80%;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+/* Book item styles */
+.book-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Buttons for book actions */
+.book-action-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Book details */
+.book-details {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    width: 80%;
+}
+
+/* Form styles (for adding/editing books) */
+.book-form {
+    width: 80%;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+}
+
+/* Input field styles */
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Submit button style */
+.submit-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* BookManagementPage.css */
+
+/* Style for the "Show Update Book Form" and "Show Delete Book Form" buttons */
+.show-form-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 5px 10px;
+    font-size: 16px;
+    /* Adjust the font size as needed */
+    margin-right: 10px;
+    width: auto;
+}
+
+.show-form-button:hover {
+    background-color: #0056b3;
+    /* Darker blue color on hover */
+}
