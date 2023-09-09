@@ -94,18 +94,20 @@ const UserList = ({ editUser }) => {
   };
 
   return (
-    <div className="UserList">
-      <h2>User List</h2>
+    <div className="UserList mt-4">
+      <div className="d-flex justify-content-center align-items-center flex-column">
+        <h2 className="text-center border-bottom w-50">User List</h2>
+      </div>
 
-      <table className="custom-table">
+      <table className="table table-striped container">
         <thead>
           <tr>
-            <th>User ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>E-Mail</th>
-            <th>Account Status</th>
-            <th>Actions</th>
+            <th scope="col">User ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">E-Mail</th>
+            <th scope="col">Account Status</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -119,10 +121,18 @@ const UserList = ({ editUser }) => {
                     <td>{user.lastName}</td>
                     <td>{user.email}</td>
                     <td>{user.accountStatus}</td>
-                    <td>
-                      <button onClick={() => handleEditUser(user)}>Edit</button>
+                    <td className="d-flex justify-content-start align-items-center gap-1">
+                      <button
+                        className="btn btn-sm btn-info"
+                        onClick={() => handleEditUser(user)}
+                      >
+                        Edit
+                      </button>
                       <br></br>
-                      <button onClick={() => handleDeleteUser(user)}>
+                      <button
+                        className="btn btn-sm btn-danger"
+                        onClick={() => handleDeleteUser(user)}
+                      >
                         Delete
                       </button>
                     </td>
