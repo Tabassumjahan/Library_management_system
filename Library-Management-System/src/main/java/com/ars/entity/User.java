@@ -8,52 +8,52 @@ public class User {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "UserID") 
-    private Long UserID;
-	@Column(name = "FirstName") 
-    private String FirstName;
+    private Long userId;
+	@Column(name = "FirstName")
+    private String firstName;
 	@Column(name = "LastName")
-    private String LastName;
+    private String lastName;
 	@Column(name = "Email")
-    private String Email;
+    private String email;
 	@Column(name = "Password")
-    private String Password;
+    private String password;
 	@Column(name = "AccountStatus")
-    private String AccountStatus;
+    private String accountStatus;
 	public Long getId() {
-		return UserID;
+		return userId;
 	}
 	public void setId(Long id) {
-		this.UserID = id;
+		this.userId = id;
 	}
 	public String getFirstName() {
-		return FirstName;
+		return firstName;
 	}
 	public void setFirstName(String firstName) {
-		this.FirstName = firstName;
+		this.firstName = firstName;
 	}
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 	public void setLastName(String lastName) {
-		this.LastName = lastName;
+		this.lastName = lastName;
 	}
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 	public void setEmail(String email) {
-		this.Email = email;
+		this.email = email;
 	}
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 	public void setPassword(String password) {
-		this.Password = password;
+		this.password = password;
 	}
 	public String getAccountStatus() {
-		return AccountStatus;
+		return accountStatus;
 	}
 	public void setAccountStatus(String accountStatus) {
-		this.AccountStatus = accountStatus;
+		this.accountStatus = accountStatus;
 	}
     
 	

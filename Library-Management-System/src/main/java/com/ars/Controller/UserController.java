@@ -38,16 +38,22 @@ public class UserController {
 	    @GetMapping("/{userId}")
 	    public ResponseEntity<User> getUserById(@PathVariable Long userId) {
 	        try {
-	            User user = userService.getUserById(userId);
+	            User user = UserService.getUserById(userId);
 	            return ResponseEntity.ok(user);
 	        } catch (NotFoundException e) {
 	            return ResponseEntity.notFound().build();
 	        }
 	    }
-	    
+
+		@PostMapping("/login")
+		public User loginUser(@RequestBody User user) throws Exception {
+			String email = user.getEmail();
+			String password = user.getPassword();
+			return userService.loginUser(email,password);
+		}
 
 	    @PostMapping("/register")
-	    public User createUser(@RequestBody User user) {
+	    public User createUser(@RequestBody User user) throws Exception {
 	        return userService.createUser(user);
 	    }
 
