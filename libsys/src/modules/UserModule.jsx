@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const userLogin = (payload) => {
+export const userLogin = async (payload) => {
   try {
-    const res = axios.post("", payload);
+    const res = await axios.post("http://localhost:8083/api/login", payload);
     return {
       success: true,
       data: res.data,
@@ -15,9 +15,9 @@ export const userLogin = (payload) => {
   }
 };
 
-export const userRegister = (payload) => {
+export const userRegister = async (payload) => {
   try {
-    const res = axios.post("", payload);
+    const res = await axios.post("http://localhost:8083/api/register", payload);
     return {
       success: true,
       data: res.data,

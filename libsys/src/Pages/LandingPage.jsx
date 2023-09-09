@@ -1,5 +1,6 @@
 import React from "react";
 import BookCard from "../components/Book/BookCard";
+import Navbar from "../components/Navbar";
 
 function LandingPage() {
   const books = [
@@ -11,6 +12,7 @@ function LandingPage() {
   ];
   return (
     <div className="mb-4">
+      <Navbar />
       <div id="carouselExampleCaptions" className="carousel slide">
         <div className="carousel-indicators">
           <button
@@ -101,7 +103,7 @@ function LandingPage() {
         </button>
       </div>
 
-      <h2 className="text-center my-4">Books</h2>
+      <h2 className="text-center my-4">BOOKS</h2>
       <div className="container">
         {books.map((book) => (
           <div>

@@ -1,23 +1,39 @@
 // LoginPage.jsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./LoginPage.css";
+import { userLogin } from "../../modules/UserModule";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../../redux/userSlice";
 
 function LoginPage({ setUserRole, setIsLoggedIn }) {
+  const user = localStorage.getItem("User");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [selectedRole, setSelectedRole] = useState("user");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleLogin = () => {
-    if (username === "admin" && password === "adminpass") {
-      setSelectedRole("Admin");
-      setUserRole(selectedRole);
-      setIsLoggedIn(true);
-    } else if (username === "user" && password === "userpass") {
-      setSelectedRole("User");
-      setUserRole(selectedRole);
-      setIsLoggedIn(true);
-    } else {
-      alert("Invalid username or password");
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, []);
+
+  const handleLogin = async () => {
+    try {
+      const res = await userLogin({
+        email: username,
+        password: password,
+      });
+      if (res.success) {
+        localStorage.setItem("User", JSON.stringify(res.data));
+        dispatch(setUser(res.data));
+        console.log("user logged in");
+        navigate("/");
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 

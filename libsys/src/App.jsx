@@ -13,6 +13,7 @@ import LoginPage from "./Pages/User/LoginPage";
 import Register from "./Pages/User/Register";
 import LandingPage from "./Pages/LandingPage";
 import Navbar from "./components/Navbar";
+import About from "./Pages/About";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("book"); // You can manage the current page state
@@ -26,6 +27,26 @@ function App() {
   //   };
 
   return (
+    <>
+      <div>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/user" element={<UserPage />} />
+          <Route path="/user-management" element={<UserManagementPage />} />
+          <Route path="/book-management" element={<BookManagementPage />} />
+          <Route
+            path="/borrow-management"
+            element={<BorrowingManagementPage />}
+          />
+          <Route path="/loan-management" element={<LoanManagementPage />} />
+          <Route path="/report" element={<ReportManagementPage />} />
+          <Route path="/book-list" element={<BookList />} />
+        </Routes>
+      </div>
+    </>
     //     <div className="">
     //       <header className="">
     //         {isLoggedIn && userRole === "admin" && (
@@ -139,25 +160,6 @@ function App() {
     //         <></>
     //       </main>
     //     </div>
-    <>
-      <div>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/user" element={<UserPage />} />
-          <Route path="/user-management" element={<UserManagementPage />} />
-          <Route path="/book-management" element={<BookManagementPage />} />
-          <Route
-            path="/borrow-management"
-            element={<BorrowingManagementPage />}
-          />
-          <Route path="/loan-management" element={<LoanManagementPage />} />
-          <Route path="/report" element={<ReportManagementPage />} />
-        </Routes>
-      </div>
-    </>
   );
 }
 

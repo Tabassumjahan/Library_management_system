@@ -3,6 +3,7 @@ import React,{ useState }  from 'react';
 import BorrowBookForm from '../components/Borrowing/BorrowingBookForm';
 import BookList from '../components/BookList';
 import BorrowingTable from '../components/BorrowingTable';
+import Navbar from '../components/Navbar';
 const BorrowingManagementPage = () => {
     const [borrowedBooks, setBorrowedBooks] = useState([]);
     // Define your borrowBook and returnBook functions here.
@@ -39,6 +40,8 @@ const BorrowingManagementPage = () => {
 
   return (
     <div>
+              <Navbar />
+
       <h1>Borrowing Management Page</h1>
       <BorrowBookForm borrowBook={borrowBook} />
     
