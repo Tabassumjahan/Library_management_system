@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import UserList from '../components/UserList';
-import AddUserForm from '../components/User/AddUserForm';
-import './UserManagementPage.css';
-import UpdateUserForm from '../components/User/UpdateUserForm';
+import React, { useState, useEffect } from "react";
+import UserList from "../components/UserList";
+import AddUserForm from "../components/User/AddUserForm";
+import "./UserManagementPage.css";
+import UpdateUserForm from "../components/User/UpdateUserForm";
+import Navbar from "../components/Navbar";
 const UserManagementPage = () => {
   const [users, setUsers] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
 
   useEffect(() => {
     // Fetch the list of users from your Spring Boot API
-    fetch('http://localhost:8083/api/users')
+    fetch("http://localhost:8083/api/users")
       .then((response) => response.json())
       .then((data) => {
         setUsers(data);
       })
       .catch((error) => {
-        console.error('Error fetching users:', error);
+        console.error("Error fetching users:", error);
       });
   }, []);
 
@@ -30,9 +31,9 @@ const UserManagementPage = () => {
   const handleUpdateUser = (updatedUser) => {
     // Make an API request to update the user data
     fetch(`http://localhost:8083/api/users/{userId}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(updatedUser),
     })
@@ -46,18 +47,18 @@ const UserManagementPage = () => {
           setEditingUser(null); // Clear editing mode
         } else {
           // Handle error cases
-          console.error('Error updating user:', response.statusText);
+          console.error("Error updating user:", response.statusText);
         }
       })
       .catch((error) => {
-        console.error('Error updating user:', error);
+        console.error("Error updating user:", error);
       });
   };
 
   const deleteUser = (userId) => {
     // Make an API request to delete the user by userId
     fetch(`http://localhost:8083/api/users/{userId}`, {
-      method: 'DELETE',
+      method: "DELETE",
     })
       .then((response) => {
         if (response.status === 204) {
@@ -65,16 +66,18 @@ const UserManagementPage = () => {
           setUsers(users.filter((user) => user.userId !== userId));
         } else {
           // Handle error cases
-          console.error('Error deleting user:', response.statusText);
+          console.error("Error deleting user:", response.statusText);
         }
       })
       .catch((error) => {
-        console.error('Error deleting user:', error);
+        console.error("Error deleting user:", error);
       });
   };
 
   return (
     <div>
+      <Navbar />
+
       <h2>User Management</h2>
       <AddUserForm addUser={addUser} />
       {editingUser && (

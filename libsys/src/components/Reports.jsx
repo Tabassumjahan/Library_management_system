@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import './Reports.css'
+import React, { useState, useEffect } from "react";
+import "./Reports.css";
 function Reports() {
   // State to manage report data
   const [reports, setReports] = useState([]);
@@ -7,17 +7,17 @@ function Reports() {
   useEffect(() => {
     // Fetch report data from your backend API here and set it using setReports
     // Example API call:
-    fetch('http://localhost:8083/api/reports')
-       .then(response => response.json())
-       .then(data => setReports(data))
-       .catch(error => console.error('Error fetching reports:', error));
+    fetch("http://localhost:8083/api/reports")
+      .then((response) => response.json())
+      .then((data) => setReports(data))
+      .catch((error) => console.error("Error fetching reports:", error));
   }, []);
 
   return (
-    <div className = 'Reports'>
-      <h2>Reports</h2>
+    <div className="container">
+      <h3 className=" text-center">Reports</h3>
 
-      <table className = 'custom-table2'>
+      <table className="custom-table2">
         <thead>
           <tr>
             <th>Report ID</th>

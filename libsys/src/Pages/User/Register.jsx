@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { userRegister } from "../../modules/UserModule";
+import "./Register.css";
 
 function Register() {
   const [user, setUser] = useState({
@@ -9,6 +10,17 @@ function Register() {
     email: "",
     password: "",
   });
+
+  const registerUser = async () => {
+    try {
+      const res = await userRegister(user);
+      if (res.success) {
+        console.log("User regitered");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div className="vh-100 d-flex justify-content-center align-items-center row">
@@ -61,7 +73,7 @@ function Register() {
           <div className="mt-3">
             <button
               className="btn btn-outline-warning btn"
-              onClick={userRegister}
+              onClick={registerUser}
             >
               Register
             </button>

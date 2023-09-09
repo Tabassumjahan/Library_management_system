@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import './UserList.css';
-import UpdateUserForm from './User/UpdateUserForm';
-import UserDelete from './User/UserDelete';
+import React, { useState, useEffect } from "react";
+import "./UserList.css";
+import UpdateUserForm from "./User/UpdateUserForm";
+import UserDelete from "./User/UserDelete";
 
 const UserList = ({ editUser }) => {
+  const user = JSON.parse(localStorage.getItem("User"));
   const [users, setUsers] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
   const [deletingUser, setDeletingUser] = useState(null);
@@ -12,24 +13,23 @@ const UserList = ({ editUser }) => {
   const [userId, setUserId] = useState(null);
 
   const fetchAllUserData = () => {
-     // Fetch the list of users from your Spring Boot API
-    fetch('http://localhost:8083/api/users')
+    // Fetch the list of users from your Spring Boot API
+    fetch("http://localhost:8083/api/users")
       .then((response) => response.json())
       .then((data) => {
         setUsers(data);
       })
       .catch((error) => {
-        console.error('Error fetching users:', error);
+        console.error("Error fetching users:", error);
       });
-  }
+  };
   useEffect(() => {
-   fetchAllUserData()
-  
+    fetchAllUserData();
 
-    fetch('http://localhost:8083/api/getUserId')
+    fetch("http://localhost:8083/api/getUserId")
       .then((response) => response.json())
       .then((data) => setUserId(data.userId))
-      .catch((error) => console.error('Error fetching userId:', error));
+      .catch((error) => console.error("Error fetching userId:", error));
   }, []);
 
   const handleEditUser = (user) => {
@@ -47,18 +47,18 @@ const UserList = ({ editUser }) => {
       console.log(user);
 
       const response = await fetch(`http://localhost:8083/api/${user.id}`, {
-        method: 'DELETE',
+        method: "DELETE",
       });
 
       if (response.status === 204) {
         // User deleted successfully
-        setDeleteMessage('User deleted successfully.');
+        setDeleteMessage("User deleted successfully.");
 
         // Update the user list by filtering out the deleted user
         setUsers((prevUsers) => prevUsers.filter((u) => u.id !== user.id));
       } else {
         // Handle error cases
-        throw new Error('User deletion failed.');
+        throw new Error("User deletion failed.");
       }
     } catch (error) {
       // Handle errors and show an error message
@@ -86,9 +86,7 @@ const UserList = ({ editUser }) => {
       // Update the user list
       setUsers(updatedUsers);
 
-      setUpdateMessage('User data updated successfully.');
-
-    
+      setUpdateMessage("User data updated successfully.");
     }
 
     // Close the editing form
@@ -96,41 +94,58 @@ const UserList = ({ editUser }) => {
   };
 
   return (
-    <div className="UserList">
-      <h2>User List</h2>
+    <div className="UserList mt-4">
+      <div className="d-flex justify-content-center align-items-center flex-column">
+        <h2 className="text-center border-bottom w-50">User List</h2>
+      </div>
 
-      <table className="custom-table">
+      <table className="table table-striped container">
         <thead>
           <tr>
-            <th>User ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>E-Mail</th>
-            <th>Account Status</th>
-            <th>Actions</th>
+            <th scope="col">User ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">E-Mail</th>
+            <th scope="col">Account Status</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
-            <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.firstName}</td>
-              <td>{user.lastName}</td>
-              <td>{user.email}</td>
-              <td>{user.accountStatus}</td>
-              <td>
-                <button onClick={() => handleEditUser(user)}>Edit</button><br></br>
-                <button onClick={() => handleDeleteUser(user)}>Delete</button>
-              </td>
-            </tr>
-          ))}
+          {users.length > 0 &&
+            users.map(
+              (user) =>
+                user.email != "admin@123" && (
+                  <tr key={user.id}>
+                    <td>{user.id}</td>
+                    <td>{user.firstName}</td>
+                    <td>{user.lastName}</td>
+                    <td>{user.email}</td>
+                    <td>{user.accountStatus}</td>
+                    <td className="d-flex justify-content-start align-items-center gap-1">
+                      <button
+                        className="btn btn-sm btn-info"
+                        onClick={() => handleEditUser(user)}
+                      >
+                        Edit
+                      </button>
+                      <br></br>
+                      <button
+                        className="btn btn-sm btn-danger"
+                        onClick={() => handleDeleteUser(user)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                )
+            )}
         </tbody>
       </table>
 
       {editingUser && (
         <UpdateUserForm
           userData={editingUser}
-          fetchAllUserData = {fetchAllUserData}
+          fetchAllUserData={fetchAllUserData}
           onCancel={handleCancelEdit}
           onUpdate={(updatedUserData) => {
             // Handle update logic here using updatedUserData
@@ -158,4 +173,3 @@ const UserList = ({ editUser }) => {
 };
 
 export default UserList;
-

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./UserPage.css";
+import Navbar from "../../components/Navbar";
 
 function UserPage() {
   const [userId, setUserId] = useState("");
@@ -82,6 +83,8 @@ function UserPage() {
 
   return (
     <div className="user-management">
+      <Navbar />
+
       {/* Reserve a book */}
       <div className="reserve-book">
         <h3>Reserve a Book</h3>

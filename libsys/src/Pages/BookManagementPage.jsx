@@ -4,6 +4,7 @@ import BookList from '../components/BookList';
 import AddBookForm from '../components/Book/AddBookForm'; // Import the AddBookForm component
 import UpdateBookForm from '../components/Book/UpdateBookForm'; // Import the UpdateBookForm component
 import './BookManagementPage.css'
+import Navbar from '../components/Navbar';
 
 
 const BookManagementPage = () => {
@@ -100,7 +101,8 @@ const BookManagementPage = () => {
   };
   return (
     <div>
-      
+              <Navbar />
+
       <AddBookForm onAddBook={addBook} />
       
       <BookList books={books} onDeleteBook={handleDeleteBook} />
