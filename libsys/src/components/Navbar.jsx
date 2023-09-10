@@ -8,7 +8,8 @@ function Navbar() {
   const user = JSON.parse(localStorage.getItem("User"));
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(user.email);
+  
+
 
   const handleLogout = () => {
     dispatch(setUser(null));
@@ -52,7 +53,7 @@ function Navbar() {
                   About
                 </Link>
               </li>
-              {user.email == "admin@123" ? (
+              {user && user.email == "admin@123" ? (
                 <>
                   <li className="nav-item">
                     <Link

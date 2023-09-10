@@ -50,67 +50,75 @@ const UpdateUserForm = ({ userData, fetchAllUserData, onCancel, onUpdate, update
       setIsUpdateSuccess(true);
       onUpdate();
     } else {
-      // Handle API error here
       console.error('Failed to update user data.');
     }
   } catch (error) {
-    // Handle network or other errors here
     console.error('Error updating user data:', error);
   }
 };
 
   return (
-    <div>
-      <h2>Update User</h2>
+    <div className="container d-flex justify-content-center align-items-center h-100 col">
+      <div className="" style={{ width: "50%" }}>
+      <h3 className=" text-center mt-3 border-bottom w-70 ">Update User</h3>
       {isUpdateSuccess && (
         <div className="success-message">User updated successfully</div>
   )}
       <form onSubmit={handleSubmit}>
-        <div>
-          <label className="custom-label">First Name:</label>
+        <div className=" center row g-3 container ms-4 mt-5">
+        <div className=" mb-3 col" >
+          <label for="firstName" class="form-label">First Name:</label>
           <input
             type="text"
             name="firstName"
+            className="form-control"
             value={updatedUser.firstName}
             onChange={handleChange}
             
           />
         </div>
-        <div>
-          <label className="custom-label">Last Name:</label>
+        <div className=" mb-3 col">
+          <label className="form-label">Last Name:</label>
           <input
             type="text"
             name="lastName"
+            className="form-control"
             value={updatedUser.lastName}
             onChange={handleChange}
             
           />
         </div>
         <div>
-          <label className="custom-label">E-Mail:</label>
+          <label className="form-label">E-Mail:</label>
           <input
             type="text"
-            name="email"
+              name="email"
+              className="form-control"
             value={updatedUser.email}
             onChange={handleChange}
             
           />
-              </div>
-              <div>
-          <label className="custom-label">Password:</label>
+          </div>
+          <div >
+          <label className="form-label">Password:</label>
           <input
             type="text"
-            name="Password"
+              name="Password"
+              className="form-control"
             value={updatedUser.password}
             onChange={handleChange}
             
           />
-              </div>
-              <br></br>
-        {/* Add more input fields for additional user properties */}
-      <button type="submit" className="update-button">Update User</button>
-      <button type="button" onClick={onCancel} className="cancel-button">Cancel</button>
-      </form>
+          </div>
+          </div>
+
+      <div className="button-container mt-3 text-center">
+      <button type="submit" className="update-button" class="btn btn-primary btn-sm">Update User</button>
+      <button type="button" onClick={onCancel} className="cancel-button" class="btn btn-danger btn-sm ms-2">Cancel</button>
+          </div>
+          
+        </form>
+        </div>
     </div>
   );
 };

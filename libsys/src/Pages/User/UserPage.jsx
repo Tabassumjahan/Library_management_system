@@ -12,9 +12,6 @@ function UserPage() {
   const [borrowMessage, setBorrowMessage] = useState("");
 
   const handleReserveBook = () => {
-    // Implement logic to reserve a book
-    // You can make a POST API request to your backend
-    // Send userBookId and bookIdToReserve as request data
 
     fetch(`http://localhost:8083/api/reservations`, {
       method: "POST",
@@ -28,10 +25,7 @@ function UserPage() {
     })
       .then((response) => response.json())
       .then((data) => {
-        // Handle API response (e.g., show a success message)
-        // Update reservedBooks state if necessary
-
-        // Assuming the API response includes the newly reserved book
+        
         setReservedBooks((prevReservedBooks) => [...prevReservedBooks, data]);
         setReservationMessage("Book reserved successfully.");
       })
@@ -41,9 +35,7 @@ function UserPage() {
       });
   };
   const handleBorrowBook = () => {
-    // Implement logic to borrow a book
-    // You can make a POST API request to your backend
-    // Send userId and bookIdToBorrow as request data
+    
 
     fetch(`http://localhost:8083/api/borrowings`, {
       method: "POST",
@@ -57,9 +49,7 @@ function UserPage() {
     })
       .then((response) => response.json())
       .then((data) => {
-        // Handle API response (e.g., show a success message)
-        // You can update borrowMessage state or take any other actions
-
+        
         setBorrowMessage("Book borrowed successfully.");
       })
       .catch((error) => {
@@ -68,8 +58,7 @@ function UserPage() {
       });
   };
   useEffect(() => {
-    // Fetch reserved books when the component mounts
-    // You can make an API request to get the list of reserved books
+    
     fetch("http://localhost:8083/api/reservations")
       .then((response) => response.json())
       .then((data) => {
@@ -86,58 +75,99 @@ function UserPage() {
       <Navbar />
 
       {/* Reserve a book */}
-      <div className="reserve-book">
-        <h3>Reserve a Book</h3>
-        <div className="input-container">
+      <div className="reserve-book mt-4 center row g-3 container ms-4">
+        <h3 className= "text-center border-bottom w-90">Reserve a Book</h3>
+
+        <div className="mb-3 col">
+          <label for="User Id" class="form-label">User Id :
+          </label>
           <input
             type="text"
+            class="form-control"
             placeholder="Enter User ID"
             value={userId}
             onChange={(e) => setUserId(e.target.value)}
             required
           />
+        </div>
+        <div className="mb-3 col">
+          <label for= "Book Id"  class="form-label">Book Id :
+          </label>
           <input
             type="text"
+            class="form-control"
             placeholder="Enter Book ID to Reserve"
             value={bookIdToReserve}
             onChange={(e) => setBookIdToReserve(e.target.value)}
           />
+        </div>
+        <div className=" text-center">
+          <label for= "Reservation Date" class="form-label">Reservation Date :
+          </label>
           <input
             type="date"
+            class="form-control"
             placeholder="Reservation Date"
             value={reservationDate}
             onChange={(e) => setReservationDate(e.target.value)}
           />
         </div>
-        <div className="button-container">
-          <button onClick={handleReserveBook}>Reserve</button>
-        </div>
+
+        <div>
+        <div className="button-container mt-3 text-center">
+          <button onClick={handleReserveBook} type="button" class="btn btn-primary btn-sm">Reserve</button>
+          </div>
+        </div >
+        <div className="text-center">
         {reservationMessage && (
           <p className="reservation-message">{reservationMessage}</p>
         )}
-      </div>
-      {/* Borrow a book */}
-      <div className="borrow-book">
-        <h3>Borrow a Book</h3>
-        <div className="input-container">
+        </div>
+    </div>
+    
+      {/* Borrow a book */ }
+      <div className="borrow-book mt-4 center row g-3 container ms-4">
+        <h3 className= "text-center border-bottom w-90">Borrow a Book</h3>
+        <div className="mb-3 col">
+          <label for="User Id" class="form-label">User Id :
+          </label>
           <input
             type="text"
             placeholder="Enter User ID"
+            class="form-control"
             value={userId}
             onChange={(e) => setUserId(e.target.value)}
             required
           />
+        </div>
+        <div className="mb-3 col">
+          <label for= "Book Id"  class="form-label">Book Id :
+          </label>
           <input
             type="text"
+            class="form-control"
             placeholder="Enter Book ID to Borrow"
             value={bookIdToBorrow}
             onChange={(e) => setBookIdToBorrow(e.target.value)}
           />
         </div>
-        <div className="button-container">
-          <button onClick={handleBorrowBook}>Borrow</button>
+         <div className=" text-center">
+          <label for= "Borrow Date" class="form-label">Borrow Date :
+          </label>
+          <input
+            type="date"
+            class="form-control"
+            placeholder="Borrow Date"
+            value={reservationDate}
+            onChange={(e) => setReservationDate(e.target.value)}
+          />
         </div>
+        <div className="button-container text-center">
+          <button onClick={handleBorrowBook} type="button" class="btn btn-primary btn-sm">Borrow</button>
+        </div>
+        <div className="text-center">
         {borrowMessage && <p className="borrow-message">{borrowMessage}</p>}
+        </div>
       </div>
     </div>
   );

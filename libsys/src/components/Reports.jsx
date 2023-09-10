@@ -15,15 +15,15 @@ function Reports() {
 
   return (
     <div className="container">
-      <h3 className=" text-center">Reports</h3>
+      <h3 className=" text-center mt-4 border-bottom w-80">Reports</h3>
 
-      <table className="custom-table2">
+      <table className="table table-stripped mt-3">
         <thead>
           <tr>
-            <th>Report ID</th>
-            <th>User Activity</th>
-            <th>Book Status</th>
-            <th>Fine Collected</th>
+            <th scope="col">Report ID</th>
+            <th scope="col">User Activity</th>
+            <th scope="col">Book Status</th>
+            <th scope="col">Fine Collected</th>
           </tr>
         </thead>
         <tbody>

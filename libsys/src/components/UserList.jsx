@@ -13,7 +13,6 @@ const UserList = ({ editUser }) => {
   const [userId, setUserId] = useState(null);
 
   const fetchAllUserData = () => {
-    // Fetch the list of users from your Spring Boot API
     fetch("http://localhost:8083/api/users")
       .then((response) => response.json())
       .then((data) => {
@@ -51,17 +50,12 @@ const UserList = ({ editUser }) => {
       });
 
       if (response.status === 204) {
-        // User deleted successfully
         setDeleteMessage("User deleted successfully.");
-
-        // Update the user list by filtering out the deleted user
         setUsers((prevUsers) => prevUsers.filter((u) => u.id !== user.id));
       } else {
-        // Handle error cases
         throw new Error("User deletion failed.");
       }
     } catch (error) {
-      // Handle errors and show an error message
       setDeleteMessage(`Error deleting user: ${error.message}`);
     } finally {
       setDeletingUser(null);
@@ -73,28 +67,20 @@ const UserList = ({ editUser }) => {
   };
 
   const handleUpdateUser = (updatedUserData) => {
-    // Handle the update logic here using updatedUserData
-    // In this example, we'll update the user in the users array
-    // Find the index of the user to update
     const userIndex = users.findIndex((user) => user.id === updatedUserData.id);
 
     if (userIndex !== -1) {
-      // Create a new array with the updated user
       const updatedUsers = [...users];
       updatedUsers[userIndex] = updatedUserData;
-
-      // Update the user list
       setUsers(updatedUsers);
 
       setUpdateMessage("User data updated successfully.");
     }
-
-    // Close the editing form
     setEditingUser(null);
   };
 
   return (
-    <div className="UserList mt-4">
+    <div className="UserList mt-5">
       <div className="d-flex justify-content-center align-items-center flex-column">
         <h2 className="text-center border-bottom w-50">User List</h2>
       </div>
@@ -148,7 +134,6 @@ const UserList = ({ editUser }) => {
           fetchAllUserData={fetchAllUserData}
           onCancel={handleCancelEdit}
           onUpdate={(updatedUserData) => {
-            // Handle update logic here using updatedUserData
             handleCancelEdit();
           }}
         />
@@ -159,15 +144,14 @@ const UserList = ({ editUser }) => {
           user={deletingUser}
           onCancel={handleCancelDelete}
           onDelete={() => {
-            // Handle delete logic here using deletingUser
             handleCancelDelete();
           }}
         />
       )}
 
-      {updateMessage && <p>{updateMessage}</p>}
+      {updateMessage && <p className=" text-center">{updateMessage}</p>}
 
-      {deleteMessage && <p>{deleteMessage}</p>}
+      {deleteMessage && <p className=" text-center">{deleteMessage}</p>}
     </div>
   );
 };

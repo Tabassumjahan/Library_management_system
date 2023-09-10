@@ -9,7 +9,6 @@ const UserManagementPage = () => {
   const [editingUser, setEditingUser] = useState(null);
 
   useEffect(() => {
-    // Fetch the list of users from your Spring Boot API
     fetch("http://localhost:8083/api/users")
       .then((response) => response.json())
       .then((data) => {
@@ -29,7 +28,6 @@ const UserManagementPage = () => {
   };
 
   const handleUpdateUser = (updatedUser) => {
-    // Make an API request to update the user data
     fetch(`http://localhost:8083/api/users/{userId}`, {
       method: "PUT",
       headers: {
@@ -39,14 +37,12 @@ const UserManagementPage = () => {
     })
       .then((response) => {
         if (response.status === 200) {
-          // User updated successfully, update the user list
           const updatedUsers = users.map((user) =>
             user.userId === updatedUser.userId ? updatedUser : user
           );
           setUsers(updatedUsers);
-          setEditingUser(null); // Clear editing mode
+          setEditingUser(null); 
         } else {
-          // Handle error cases
           console.error("Error updating user:", response.statusText);
         }
       })
@@ -56,16 +52,13 @@ const UserManagementPage = () => {
   };
 
   const deleteUser = (userId) => {
-    // Make an API request to delete the user by userId
     fetch(`http://localhost:8083/api/users/{userId}`, {
       method: "DELETE",
     })
       .then((response) => {
         if (response.status === 204) {
-          // User deleted successfully, update the user list
           setUsers(users.filter((user) => user.userId !== userId));
         } else {
-          // Handle error cases
           console.error("Error deleting user:", response.statusText);
         }
       })
@@ -77,8 +70,12 @@ const UserManagementPage = () => {
   return (
     <div>
       <Navbar />
-
-      <h2>User Management</h2>
+      
+      <h2 className="text-center mt-3">User Management</h2>
+       <div className="col text-center w-80 "> 
+          <img
+            src="https://img.freepik.com/free-photo/open-book-with-character-arrangement_23-2150264096.jpg?size=626&ext=jpg&ga=GA1.2.1158874087.1694090533&semt=ais" class="img-fluid2" ></img>
+      </div>
       <AddUserForm addUser={addUser} />
       {editingUser && (
         <UpdateUserForm
@@ -87,9 +84,11 @@ const UserManagementPage = () => {
           onUpdate={handleUpdateUser}
         />
       )}
+      <div className=" mt-4 ">
       <UserList users={users} editUser={editUser} deleteUser={deleteUser} />
+      </div>
     </div>
   );
-};
+} ;
 
 export default UserManagementPage;

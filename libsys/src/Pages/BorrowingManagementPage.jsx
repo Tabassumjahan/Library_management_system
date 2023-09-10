@@ -40,15 +40,11 @@ const BorrowingManagementPage = () => {
 
   return (
     <div>
-              <Navbar />
-
-      <h1>Borrowing Management Page</h1>
-      <BorrowBookForm borrowBook={borrowBook} />
-    
-
-    
-          <BookList />
-          
+      <Navbar />
+      <div className="container mt-3">
+      <h2 className="text-center mt-3 border-bottom w-70">Borrowing Management Page</h2>
+        <BorrowBookForm borrowBook={borrowBook} />
+      </div>  
     <BorrowingTable borrowedBooks={borrowedBooks} />
     </div>
   );

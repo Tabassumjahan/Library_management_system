@@ -45,8 +45,6 @@ const AddBookForm = ({ onAddBook }) => {
               return response.json();
           })
           .then((data) => {
-    
-              // Clear the form after adding the book
               setBook({
                   
                   title: '',
@@ -67,44 +65,53 @@ const AddBookForm = ({ onAddBook }) => {
   };
 
   return (
-    <div>
-      <h2>Add New Book</h2>
-          <form onSubmit={handleSubmit}>
+    <div className="mt-4 container">
+      <div className="col">
         
-        <div>
-          <label className="custom-label">Title:</label>
+      </div>
+      <div className="container d-flex justify-content-center align-items-center h-100 col">
+        <div className="" style={{ width: "50%" }}>
+      <h2 className="text-center mt-3 container border-bottom w-50">Add New Book</h2>
+          <form onSubmit={handleSubmit}>
+        <div className="center row g-3 container ms-4 mt-5">
+        <div className=" mb-3 col" >
+          <label className="form-label">Title : </label>
           <input
             type="text"
-            name="title"
+              name="title"
+              className= "form-control"
             value={book.title}
             onChange={handleChange}
             required
           />
         </div>
-        <div>
-          <label className="custom-label">Author:</label>
+        <div className=" mb-3 col" >
+          <label className="form-label">Author:</label>
           <input
             type="text"
-            name="author"
+              name="author"
+              className="form-control"
             value={book.author}
             onChange={handleChange}
             required
           />
         </div>
-        <div>
-          <label className="custom-label">Subject:</label>
+        <div >
+          <label className="form-label">Subject:</label>
           <input
             type="text"
             name="subject"
+            className="form-control"
             value={book.subject}
             onChange={handleChange}
             required
           />
         </div>
         <div>
-          <label className="custom-label">ISBN:</label>
+          <label className="form-label">ISBN:</label>
           <input
-            type="text"
+              type="text"
+              className="form-control"
             name="isbn"
             value={book.isbn}
             onChange={handleChange}
@@ -112,51 +119,61 @@ const AddBookForm = ({ onAddBook }) => {
           />
         </div>
         <div>
-          <label className="custom-label">Publisher:</label>
+          <label className="form-label">Publisher:</label>
           <input
             type="text"
-            name="publisher"
+              name="publisher"
+              className="form-control"
             value={book.publisher}
             onChange={handleChange}
             required
           />
         </div>
         <div>
-          <label className="custom-label">Publication Date:</label>
+          <label className="form-label">Publication Date:</label>
           <input
             type="date"
-            name="publicationDate"
+              name="publicationDate"
+              className="form-control"
             value={book.publicationDate}
             onChange={handleChange}
             required
           />
         </div>
-        <div>
-          <label className="custom-label">Quantity:</label>
+        <div className=" mb-3 col">
+          <label className="form-label">Quantity:</label>
           <input
             type="number"
-            name="quantity"
+              name="quantity"
+              className="form-control"
             value={book.quantity}
             onChange={handleChange}
             required
           />
               </div>
-            <div>
-          <label className="custom-label">Avaliable-Quantity:</label>
+            <div className=" mb-3 col">
+          <label className="form-label">Avaliable-Quantity:</label>
           <input
-            type="number"
+              type="number"
+              className="form-control"
             name="availableQuantity"
             value={book.availableQuantity}
             onChange={handleChange}
             required
           />
-              </div>
-          
-        <br></br>   
+          </div>
+        </div>
+        <div className="button-container mt-3 text-center">
         <button type="submit">Add Book</button>
-          </form>
+          </div>
+          
+      </form>
+      <div className="text-center"> 
         {message && <p>{message}</p>} {/* Display the message if it's set */}
     </div>
+      </div>
+      </div>
+      </div>
   );
 };
 

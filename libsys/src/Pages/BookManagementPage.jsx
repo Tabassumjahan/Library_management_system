@@ -1,8 +1,8 @@
 // BookManagementPage.js
 import React, {useState, useEffect} from 'react';
 import BookList from '../components/BookList';
-import AddBookForm from '../components/Book/AddBookForm'; // Import the AddBookForm component
-import UpdateBookForm from '../components/Book/UpdateBookForm'; // Import the UpdateBookForm component
+import AddBookForm from '../components/Book/AddBookForm'; 
+import UpdateBookForm from '../components/Book/UpdateBookForm'; 
 import './BookManagementPage.css'
 import Navbar from '../components/Navbar';
 
@@ -15,16 +15,14 @@ const BookManagementPage = () => {
   const [deleteSuccessMessage, setDeleteSuccessMessage] = useState('');
   const [updateSuccessMessage, setUpdateSuccessMessage] = useState('');
   const [bookData, setBookData] = useState(null);
-  // Function to add a new book to the list
+  
   const addBook = (newBook) => {
-    // Update the list of books with the new book
+  
     setBooks([...books, newBook]);
   };
 
   const handleUpdateBook = (updatedBookData) => {
-    // Perform the update logic here, e.g., make an API call to update the book
-    // After updating, you can clear the bookToUpdate state
-    // Example API call:
+ 
     if (!bookData || !bookData.bookId) {
     console.error('Invalid book data for update.');
     return;
@@ -43,7 +41,7 @@ const BookManagementPage = () => {
         );
 
         setBooks(updatedBooks);
-        // Clear the bookToUpdate state to hide the update form
+       
         setBookToUpdate(null);
         setUpdateSuccessMessage('Book updated successfully.');
       })
@@ -52,9 +50,8 @@ const BookManagementPage = () => {
       });
   };
   useEffect(() => {
-    // Fetch the list of books from the API or any other source
-    // and set it to the state
-    const apiUrl = 'http://localhost:8083/api/books'; // Update with your API URL
+
+    const apiUrl = 'http://localhost:8083/api/books'; 
 
     fetch(apiUrl)
       .then((response) => response.json())
@@ -67,7 +64,6 @@ const BookManagementPage = () => {
   }, []);
 
    const handleShowUpdateForm = () => {
-    // When the "Show Update Book Form" button is clicked
     setShowUpdateForm(true);
    };
   
@@ -80,9 +76,6 @@ const BookManagementPage = () => {
   };
   
    const handleDeleteBook = (bookId) => {
-    // Make an API request to delete the book by book ID or title
-    // Update the books state after deleting the book
-    // Example API call to delete by book ID:
     fetch(`http://localhost:8083/api/books/${bookId}`, {
       method: 'DELETE',
     })
@@ -90,7 +83,6 @@ const BookManagementPage = () => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        // Remove the deleted book from the books state
         setBooks(books.filter(book => book.id !== bookId));
         setShowDeleteForm(false);
         setDeleteSuccessMessage('Book deleted successfully.');
@@ -101,10 +93,10 @@ const BookManagementPage = () => {
   };
   return (
     <div>
-              <Navbar />
-
+      <Navbar />
+      <div className="container mt-3">
       <AddBookForm onAddBook={addBook} />
-      
+      </div>
       <BookList books={books} onDeleteBook={handleDeleteBook} />
       <div className="BookList">
 
@@ -114,40 +106,45 @@ const BookManagementPage = () => {
               onUpdateBook={handleUpdateBook}
             />
       ) : (
-        <div className="landing-page">
-          {/* Button to show the UpdateBookForm */}
-          <h2>Click to open Book Update form</h2>
-          <button className="show-form-button" onClick={handleShowUpdateForm}>
+        <div className="container mt-5 text-center bottom-border w-50">
+          <h3>Click to open Book Update form</h3>
+          <button className="show-form-button" onClick={handleShowUpdateForm} class="btn btn-primary">
             Show Update Book Form
           </button>
         </div>
         )}
         {showDeleteForm ? (
-          <div className="delete-form">
-            <h2>Delete Book</h2>
-            <div>
-            <p>Enter Book ID:</p>
-              <input type="text" /><br></br>
+          <div className="container d-flex justify-content-center align-items-center h-100 col">
+        <div className="" style={{ width: "50%" }}>
+            <h3 className="text-center mt-4 container border-bottom w-50">Delete Book</h3>
+            <div className= " form-label text-center" >
+            <p className= "mt-3">Enter Book ID:</p>
+                <input type="text"
+                  id="bookId"
+                  name="bookId"
+                  className="form-control"
+                />
             </div>
             <br></br>
-            <div>
-            <button className="show-form-button" onClick={handleDeleteBook}>Delete</button>
-            <button className="show-form-button" onClick={handleHideDeleteForm}>Cancel</button>
+            <div className =" button-container mt-2 text-center">
+            <button className="show-form-button" onClick={handleDeleteBook} class="btn btn-danger btn-sm"> Delete</button>
+            <button className="show-form-button" onClick={handleHideDeleteForm} class="btn btn-primary btn-sm ms-2">Cancel</button>
             </div>
             </div>
+          </div>
         ) : (
-          <div className="landing-page">
+          <div className="container mt-5 text-center bottom-border w-50">
             <h2>Click to open Delete Book form</h2>
-            <button className="show-form-button" onClick={handleShowDeleteForm}>
+            <button className="show-form-button" onClick={handleShowDeleteForm} class="btn btn-primary">
               Show Delete Book Form
             </button>
           </div>
         )}
         {deleteSuccessMessage && (
-          <div className="success-message">{deleteSuccessMessage}</div>
+          <div className="success-message container mt-5 text-center">{deleteSuccessMessage}</div>
         )}
         {updateSuccessMessage && (
-          <div className="success-message">{updateSuccessMessage}</div>
+          <div className="success-message container mt-5 text-center">{updateSuccessMessage}</div>
         )}
       </div>
     </div>

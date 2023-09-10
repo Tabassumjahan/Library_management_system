@@ -30,7 +30,7 @@ const [reservations, setReservations] = useState([]);
           <h2>Reservation Management</h2>
       <ReservationForm onSubmit={handleReservationSubmit} />
           < Reservation />
-          <BookList />
+          
 
       {/* Add your reservation management components, tables, and reports */}
     </div>

@@ -38,7 +38,7 @@ function LoginPage({ setUserRole, setIsLoggedIn }) {
   };
 
   return (
-    <div className="vh-100 d-flex justify-content-center align-items-center row">
+    <div className="mt-4 container">
       <div className="col">
         <img
           className="login-img"

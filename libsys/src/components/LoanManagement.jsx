@@ -52,59 +52,70 @@ function LoanManagement() {
   };
 
   return (
-    <div>
-      <h2>Loan Management</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label className="custom-label">User ID:</label>
+    <div className="LoanBook mt-4 center row g-3 container ms-4">
+    <div className="d-flex justify-content-center align-items-center flex-column">
+      <div className="" style={{ width: "50%" }}>
+      <h2 className="text-center border-bottom w-80">Loan Management</h2>
+          <form onSubmit={handleSubmit}>
+         <div className="LoanBook mt-4 center row g-3 container ms-4">
+
+        <div className="col mt-3"> 
+          <label className="form-label">User ID:</label>
           <input
             type="text"
             name="userId"
+            className= "form-control"
             value={loanData.userId}
             onChange={handleInputChange}
             required
           />
         </div>
-        <div>
-          <label className="custom-label">Book ID:</label>
+        <div className="col mt-3"> 
+          <label className="form-label">Book ID:</label>
           <input
             type="text"
             name="bookId"
+            className= "form-control"
             value={loanData.bookId}
             onChange={handleInputChange}
             required
           />
         </div>
         <div>
-          <label className="custom-label">Due Date:</label>
+          <label className="form-label">Due Date:</label>
           <input
             type="date"
             name="dueDate"
+            className= "form-control"
             value={loanData.dueDate}
             onChange={handleInputChange}
             required
           />
         </div>
         <div>
-          <label className="custom-label">Fine:</label>
+          <label className="fine-label">Fine:</label>
           <input
             type="text"
             name="fine"
+            className= "form-control"
             value={loanData.fine}
             onChange={handleInputChange}
             required
           />
               </div>
-              <br></br>
-        <button type="submit">Create Loan</button>
+              <div className="button-container mt-3 text-center">
+                <button type="submit">Create Loan</button>
+                </div>
+              </div>
           </form>
-          
+          </div>
+          </div>
 
         <div className = "LoanList">
 
-
-        <h2>Loan List</h2>
-        <table className = "custom-table1">
+        <div className ="container mt-5"> 
+        <h3 className="text-center mt-4 border-bottom w-80">Loan List</h3>
+        <table className = "table table-striped mt-4 ms-4">
         <thead>
           <tr>
             <th>Loan ID</th>
@@ -127,6 +138,7 @@ function LoanManagement() {
         ))}
         </tbody>
         </table>
+        </div>
         </div>
     </div>
   );

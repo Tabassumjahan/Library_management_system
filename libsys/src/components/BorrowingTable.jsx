@@ -4,8 +4,7 @@ const BorrowingTable = () => {
     const [borrowedBooks, setBorrowedBooks] = useState([]);
 
   useEffect(() => {
-    // Fetch the list of borrowed books from your Spring Boot API
-    fetch('http://localhost:8083/api/borrowings') // Update the URL to match your Spring Boot API endpoint
+    fetch('http://localhost:8083/api/borrowings') 
       .then(response => response.json())
       .then(data => {
         setBorrowedBooks(data);
@@ -16,18 +15,18 @@ const BorrowingTable = () => {
       });
   }, []);
   return (
-    <div className ="Borrowed Books">
-      <h2>Borrowed Books</h2>
-      <table className = "custom-table5" >
+    <div className ="container mt-5">
+      <h3 className="text-center mt-4 border-bottom w-70">Borrowed Books</h3>
+      <table className = "table table-striped" >
         <thead>
           <tr>
-           <th>Borrowing ID</th> 
-            <th>User ID</th>
-            <th>Book ID</th>
-            <th>Borrow Date</th>
-            <th>Due Date</th>
-            <th>Return Date</th>
-            <th>Status</th>
+           <th scope="col">Borrowing ID</th> 
+            <th scope="col">User ID</th>
+            <th scope="col">Book ID</th>
+            <th scope="col">Borrow Date</th>
+            <th scope="col">Due Date</th>
+            <th scope="col">Return Date</th>
+            <th scope="col">Status</th>
           </tr>
         </thead>
         <tbody>
