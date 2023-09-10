@@ -12,8 +12,6 @@ const LoanManagementPage = () => {
           <img
             src="https://img.freepik.com/free-photo/creative-world-book-day-composition_23-2148883781.jpg?w=996&t=st=1694350801~exp=1694351401~hmac=1769088a8a1cb938dd71c7b5007e2e1d978e1abfe3cd48219bd1892fc7db6d23" class="img-fluid15"></img>
       </div>
-
-
       < LoanManagement />
     </div>
   );

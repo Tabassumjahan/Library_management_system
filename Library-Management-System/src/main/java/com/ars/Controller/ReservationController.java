@@ -1,6 +1,7 @@
 package com.ars.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -38,7 +39,7 @@ public class ReservationController {
     }
 
     @PostMapping
-    public Reservation createReservation(@RequestBody Reservation reservation) {
+    public Reservation createReservation(@RequestBody Map<String,String> reservation) {
         return reservationService.createReservation(reservation);
     }
     

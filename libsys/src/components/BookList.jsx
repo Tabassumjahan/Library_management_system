@@ -2,35 +2,70 @@ import React, { useState, useEffect } from "react";
 import "./BookList.css";
 import BookSearch from "./BookSearch";
 import Navbar from "./Navbar";
+import UpdateBookForm from "./Book/UpdateBookForm";
 
-const BookList = () => {
-  const user = JSON.parse (localStorage.getItem("User"))
-  const [books, setBooks] = useState([]);
+const BookList = ({ getBookList, books, setBooks }) => {
+  const user = JSON.parse(localStorage.getItem("User"));
+  const [bookToUpdate, setBookToUpdate] = useState(null);
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
+  const [showDeleteForm, setShowDeleteForm] = useState(false);
+  const [deleteSuccessMessage, setDeleteSuccessMessage] = useState("");
+  const [updateSuccessMessage, setUpdateSuccessMessage] = useState("");
+
+  // const [books, setBooks] = useState([]);
+
+  // const getBookList = () => {
+  //   const apiUrl = "http://localhost:8083/api/books"; // Update with your API URL
+
+  //   // Fetch the list of books from the API
+  //   fetch(apiUrl)
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error("Network response was not ok");
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       setBooks(data);
+  //       console.log(data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching books:", error);
+  //     });
+  // };
 
   useEffect(() => {
-    const apiUrl = "http://localhost:8083/api/books"; // Update with your API URL
-
-    // Fetch the list of books from the API
-    fetch(apiUrl)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setBooks(data);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching books:", error);
-      });
+    getBookList();
   }, []);
 
   const [searchResults, setSearchResults] = useState([]);
 
+  const handleShowUpdateForm = () => {
+    setShowUpdateForm(true);
+  };
+
+  const handleShowDeleteForm = () => {
+    setShowDeleteForm(true);
+  };
+
+  const handleDeleteBook = (bookId) => {
+    fetch(`http://localhost:8083/api/books/${bookId}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        getBookList();
+        setShowDeleteForm(false);
+        setDeleteSuccessMessage("Book deleted successfully.");
+      })
+      .catch((error) => {
+        console.error("Error deleting book:", error);
+      });
+  };
+
   const handleSearch = (query) => {
-   
     const filteredBooks = books.filter((book) => {
       const lowerCaseQuery = query.toLowerCase();
       return (
@@ -39,14 +74,12 @@ const BookList = () => {
         book.subject.toLowerCase().includes(lowerCaseQuery)
       );
     });
-
-    // Update the books state with the filtered results
     setBooks(filteredBooks);
   };
+
   return (
-    
-    <div className="BookList mt-4">
-      {user.email != "admin@123" && <Navbar /> }
+    <div className="BookList mt-4 mb-5">
+      {user.email != "admin@123" && <Navbar />}
       <h2 className="text-center mt-4 my-4">BOOK LIST </h2>
       <div className="d-flex justify-content-center align-items-center flex-column"></div>
       <BookSearch onSearch={handleSearch} />
@@ -65,7 +98,8 @@ const BookList = () => {
             <th scope="col">Publisher</th>
             <th scope="col">PublicationDate</th>
             <th scope="col">Quantity</th>
-            <th scope="col">Available Quantity</th>
+            <th scope="col">Available Q.</th>
+            <th scopr="col">Actions</th>
             {/* Add more columns as needed */}
           </tr>
         </thead>
@@ -82,9 +116,32 @@ const BookList = () => {
                   <td>{book.publicationDate}</td>
                   <td>{book.quantity}</td>
                   <td>{book.availableQuantity}</td>
+                  <td>
+                    <div>
+                      <button
+                        className="btn btn-info btn-sm"
+                        onClick={() => {
+                          handleShowUpdateForm();
+                          setBookToUpdate(book);
+                        }}
+                      >
+                        Update
+                      </button>
+                      <button
+                        className="btn btn-danger btn-sm"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleDeleteBook(book.id);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </td>
                 </tr>
               ))
-            : books.map((book) => (
+            : books.length > 0 &&
+              books.map((book) => (
                 <tr key={book.id}>
                   <td>{book.id}</td>
                   <td>{book.title}</td>
@@ -95,12 +152,44 @@ const BookList = () => {
                   <td>{book.publicationDate}</td>
                   <td>{book.quantity}</td>
                   <td>{book.availableQuantity}</td>
+                  <td>
+                    <div className="">
+                      <button
+                        className="btn btn-info btn-sm mx-1"
+                        onClick={() => {
+                          handleShowUpdateForm();
+                          setBookToUpdate(book);
+                        }}
+                      >
+                        Update
+                      </button>
+                      <button
+                        className="btn btn-danger btn-sm"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleDeleteBook(book.id);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </td>
 
                   {/* Display more data as needed */}
                 </tr>
               ))}
         </tbody>
       </table>
+
+      <div className="BookList">
+        {showUpdateForm && (
+          <UpdateBookForm
+            bookData={bookToUpdate}
+            setShowUpdateForm={setShowUpdateForm}
+            getBookList={getBookList}
+          />
+        )}
+      </div>
     </div>
   );
 };

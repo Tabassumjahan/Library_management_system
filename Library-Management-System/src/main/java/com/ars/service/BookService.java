@@ -33,15 +33,8 @@ public class BookService {
     }
 
     public static Book updateBook(Long bookId, Book updatedBook) {
-        Book existingBook = bookRepository.findById(bookId)
-                .orElseThrow();
-
-        // Update book properties here
-        existingBook.setTitle(updatedBook.getTitle());
-        existingBook.setAuthor(updatedBook.getAuthor());
-        // Update other properties
-
-        return bookRepository.save(existingBook);
+        updatedBook.setId(bookId);
+        return bookRepository.save(updatedBook);
     }
 
     public static void deleteBook(Long bookId) {

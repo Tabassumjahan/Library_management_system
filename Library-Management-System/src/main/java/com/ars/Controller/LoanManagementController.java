@@ -1,6 +1,7 @@
 package com.ars.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
@@ -41,7 +42,7 @@ public class LoanManagementController {
 	    }
 
 	    @PostMapping
-	    public LoanManagement createLoan(@RequestBody LoanManagement loan) {
+	    public LoanManagement createLoan(@RequestBody Map<String,String> loan) {
 	        return loanManagementService.createLoan(loan);
 	    }
 

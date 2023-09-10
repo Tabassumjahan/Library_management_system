@@ -11,24 +11,24 @@ public class Reservation {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ReservationID;
+    private Long reservationID;
 
     @ManyToOne
-    @JoinColumn(name = "UserID")
+    @JoinColumn(name = "userID")
     private User User;
 
     @ManyToOne
-    @JoinColumn(name = "BookID")
+    @JoinColumn(name = "bookID")
     private Book Book;
 
-    private LocalDate ReservationDate;
+    private LocalDate reservationDate;
 
 	public Long getReservationID() {
-		return ReservationID;
+		return reservationID;
 	}
 
 	public void setReservationID(Long reservationID) {
-		ReservationID = reservationID;
+		this.reservationID = reservationID;
 	}
 
 	public User getUser() {
@@ -48,11 +48,11 @@ public class Reservation {
 	}
 
 	public LocalDate getReservationDate() {
-		return ReservationDate;
+		return reservationDate;
 	}
 
 	public void setReservationDate(LocalDate reservationDate) {
-		ReservationDate = reservationDate;
+		this.reservationDate = reservationDate;
 	}
 
 }

@@ -7,29 +7,28 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "Borrowing")
 public class Borrowing {
-	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long BorrowingID;
+    private Long borrowingId;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "UserID")
+    @JoinColumn(name = "userId")
     private User User;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "BookID")
+    @JoinColumn(name = "bookId")
     private Book Book;
 
-    private LocalDate BorrowDate;
-    private LocalDate DueDate;
-    private LocalDate ReturnDate;
-    private String Status;
+    private LocalDate borrowDate;
+    private LocalDate dueDate;
+    private LocalDate returnDate;
+    private String status;
     
 	public Long getBorrowingID() {
-		return BorrowingID;
+		return borrowingId;
 	}
-	public void setBorrowingID(Long borrowingID) {
-		BorrowingID = borrowingID;
+	public void setBorrowingId(Long borrowingId) {
+		this.borrowingId = borrowingId;
 	}
 	public User getUser() {
 		return User;
@@ -44,28 +43,28 @@ public class Borrowing {
 		this.Book = book;
 	}
 	public LocalDate getBorrowDate() {
-		return BorrowDate;
+		return borrowDate;
 	}
 	public void setBorrowDate(LocalDate borrowDate) {
-		this.BorrowDate = borrowDate;
+		this.borrowDate = borrowDate;
 	}
 	public LocalDate getDueDate() {
-		return DueDate;
+		return dueDate;
 	}
 	public void setDueDate(LocalDate dueDate) {
-		this.DueDate = dueDate;
+		this.dueDate = dueDate;
 	}
 	public LocalDate getReturnDate() {
-		return ReturnDate;
+		return returnDate;
 	}
 	public void setReturnDate(LocalDate returnDate) {
-		this.ReturnDate = returnDate;
+		this.returnDate = returnDate;
 	}
 	public String getStatus() {
-		return Status;
+		return status;
 	}
 	public void setStatus(String status) {
-		this.Status = status;
+		this.status = status;
 	}
 
 

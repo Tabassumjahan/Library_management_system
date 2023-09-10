@@ -8,35 +8,35 @@ public class Reports {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ReportID;
+    private Long reportId;
 
-    private String UserActivity;
-    private String BookStatus;
-    private double FineCollected;
+    private String userActivity;
+    private String bookStatus;
+    private double fineCollected;
     
 	public Long getReportID() {
-		return ReportID;
+		return reportId;
 	}
 	public void setReportID(Long reportID) {
-		ReportID = reportID;
+		reportID = reportID;
 	}
 	public String getUserActivity() {
-		return UserActivity;
+		return userActivity;
 	}
 	public void setUserActivity(String userActivity) {
-		UserActivity = userActivity;
+		userActivity = userActivity;
 	}
 	public String getBookStatus() {
-		return BookStatus;
+		return bookStatus;
 	}
 	public void setBookStatus(String bookStatus) {
-		BookStatus = bookStatus;
+		bookStatus = bookStatus;
 	}
 	public double getFineCollected() {
-		return FineCollected;
+		return fineCollected;
 	}
 	public void setFineCollected(double fineCollected) {
-		FineCollected = fineCollected;
+		fineCollected = fineCollected;
 	}
 
 

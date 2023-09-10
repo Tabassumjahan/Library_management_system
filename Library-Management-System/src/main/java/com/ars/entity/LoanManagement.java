@@ -18,49 +18,48 @@ public class LoanManagement {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long LoanID;
+    private Long loadId;
 
     @ManyToOne
-    @JoinColumn(name = "UserID")
+    @JoinColumn(name = "userId")
     private User User;
 
     @ManyToOne
-    @JoinColumn(name = "BookID")
+    @JoinColumn(name = "bookId")
     private Book Book;
 
-    private LocalDate DueDate;
-    private double Fine;
+    private LocalDate dueDate;
+    private double fine;
     
 	public Long getLoanID() {
-		return LoanID;
+		return loadId;
 	}
 	public void setLoanID(Long loanID) {
-		LoanID = loanID;
+		this.loadId = loanID;
 	}
 	public User getUser() {
 		return User;
 	}
 	public void setUser(User user) {
-		User = user;
+		this.User = user;
 	}
 	public Book getBook() {
 		return Book;
 	}
 	public void setBook(Book book) {
-		Book = book;
+		this.Book = book;
 	}
 	public LocalDate getDueDate() {
-		return DueDate;
+		return dueDate;
 	}
 	public void setDueDate(LocalDate dueDate) {
-		DueDate = dueDate;
+		this.dueDate = dueDate;
 	}
 	public double getFine() {
-		return Fine;
+		return fine;
 	}
 	public void setFine(double fine) {
-		Fine = fine;
+		this.fine = fine;
 	}
-
 
 }

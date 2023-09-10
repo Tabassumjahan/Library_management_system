@@ -8,63 +8,63 @@ public class Book {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long BookID;
-    private String Title;
-    private String Author;
-    private String Subject;
-    private String ISBN;
-    private String Publisher;
-    private String PublicationDate;
-    private int Quantity;
+    private Long bookId;
+    private String title;
+    private String author;
+    private String subject;
+    private String isbn;
+    private String publisher;
+    private String publicationDate;
+    private int quantity;
     private int availableQuantity;
     
 	public Long getId() {
-		return BookID;
+		return bookId;
 	}
 	public void setId(Long id) {
-		this.BookID = id;
+		this.bookId = id;
 	}
 	public String getTitle() {
-		return Title;
+		return title;
 	}
 	public void setTitle(String title) {
-		this.Title = title;
+		this.title = title;
 	}
 	public String getAuthor() {
-		return Author;
+		return author;
 	}
 	public void setAuthor(String author) {
-		this.Author = author;
+		this.author = author;
 	}
 	public String getSubject() {
-		return Subject;
+		return subject;
 	}
 	public void setSubject(String subject) {
-		this.Subject = subject;
+		this.subject = subject;
 	}
 	public String getIsbn() {
-		return ISBN;
+		return isbn;
 	}
 	public void setIsbn(String isbn) {
-		this.ISBN = isbn;
+		this.isbn = isbn;
 	}
 	public String getPublisher() {
-		return Publisher;
+		return publisher;
 	}
 	public void setPublisher(String publisher) {
-		this.Publisher = publisher;
+		this.publisher = publisher;
 	}
 	public String getPublicationDate() {
-		return PublicationDate;
+		return publicationDate;
 	}
 	public void setPublicationDate(String publicationDate) {
-		this.PublicationDate = publicationDate;
+		this.publicationDate = publicationDate;
 	}
 	public int getQuantity() {
-		return Quantity;
+		return quantity;
 	}
 	public void setQuantity(int quantity) {
-		this.Quantity = quantity;
+		this.quantity = quantity;
 	}
 	public int getAvailableQuantity() {
 		return availableQuantity;

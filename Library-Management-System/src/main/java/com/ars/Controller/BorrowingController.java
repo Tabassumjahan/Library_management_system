@@ -1,6 +1,7 @@
 package com.ars.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,13 +22,14 @@ import com.ars.service.BorrowingService;
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/borrowings")
 public class BorrowingController {
-	
-	private final BorrowingService borrowingService;
+
+    private final BorrowingService borrowingService;
 
     @Autowired
     public BorrowingController(BorrowingService borrowingService) {
         this.borrowingService = borrowingService;
     }
+
     @GetMapping
     public List<Borrowing> getAllBorrowings() {
         return borrowingService.getAllBorrowings();
@@ -39,7 +41,7 @@ public class BorrowingController {
     }
 
     @PostMapping
-    public Borrowing createBorrowing(@RequestBody Borrowing borrowing) {
+    public Borrowing createBorrowing(@RequestBody Map<String,String> borrowing) {
         return borrowingService.createBorrowing(borrowing);
     }
 
@@ -52,6 +54,6 @@ public class BorrowingController {
     public void deleteBorrowing(@PathVariable Long borrowingId) {
         borrowingService.deleteBorrowing(borrowingId);
     }
-   
+
 
 }
