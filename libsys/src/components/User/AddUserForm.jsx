@@ -45,7 +45,7 @@ const AddUserForm = ({ onAddUser }) => {
         <h3 className="text-center mt-3">Add User</h3>
         
         <form onSubmit={handleSubmit} className="add-user-form">
-        <div className="AddUser mt-4 center row g-3 container ms-4"> 
+       <div className="AddUser mt-4 center row g-3 container ms-4"> 
         <div className="mb-3 col mt-3">
           <label className ="form-label">First Name : </label>
           <input

@@ -4,7 +4,7 @@ import BookSearch from "./BookSearch";
 import Navbar from "./Navbar";
 import UpdateBookForm from "./Book/UpdateBookForm";
 
-const BookList = ({ getBookList, books, setBooks }) => {
+const BookList = ({ books, setBooks }) => {
   const user = JSON.parse(localStorage.getItem("User"));
   const [bookToUpdate, setBookToUpdate] = useState(null);
   const [showUpdateForm, setShowUpdateForm] = useState(false);
@@ -12,27 +12,25 @@ const BookList = ({ getBookList, books, setBooks }) => {
   const [deleteSuccessMessage, setDeleteSuccessMessage] = useState("");
   const [updateSuccessMessage, setUpdateSuccessMessage] = useState("");
 
-  // const [books, setBooks] = useState([]);
 
-  // const getBookList = () => {
-  //   const apiUrl = "http://localhost:8083/api/books"; // Update with your API URL
+  const getBookList = () => {
+  const apiUrl = "http://localhost:8083/api/books"; // Update with your API URL
 
-  //   // Fetch the list of books from the API
-  //   fetch(apiUrl)
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error("Network response was not ok");
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       setBooks(data);
-  //       console.log(data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching books:", error);
-  //     });
-  // };
+  fetch(apiUrl)
+  .then((response) => {
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+     }
+     return response.json();
+    })
+    .then((data) => {
+      setBooks(data);
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error("Error fetching books:", error);
+    });
+ };
 
   useEffect(() => {
     getBookList();
@@ -74,7 +72,7 @@ const BookList = ({ getBookList, books, setBooks }) => {
         book.subject.toLowerCase().includes(lowerCaseQuery)
       );
     });
-    setBooks(filteredBooks);
+    setSearchResults(filteredBooks);
   };
 
   return (
@@ -84,8 +82,6 @@ const BookList = ({ getBookList, books, setBooks }) => {
       <div className="d-flex justify-content-center align-items-center flex-column"></div>
       <BookSearch onSearch={handleSearch} />
       <div className="space-after-search"></div>
-
-      
 
       <table className="table table-striped container">
         <thead>
@@ -99,13 +95,12 @@ const BookList = ({ getBookList, books, setBooks }) => {
             <th scope="col">PublicationDate</th>
             <th scope="col">Quantity</th>
             <th scope="col">Available Q.</th>
-            <th scopr="col">Actions</th>
-            {/* Add more columns as needed */}
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
-          {searchResults.length > 0
-            ? searchResults.map((book) => (
+          { searchResults.length > 0
+            ?  searchResults.map((book) => (
                 <tr key={book.id}>
                   <td>{book.id}</td>
                   <td>{book.title}</td>
@@ -140,8 +135,8 @@ const BookList = ({ getBookList, books, setBooks }) => {
                   </td>
                 </tr>
               ))
-            : books.length > 0 &&
-              books.map((book) => (
+           : books && books.length > 0 
+             ? books.map((book) => (
                 <tr key={book.id}>
                   <td>{book.id}</td>
                   <td>{book.title}</td>
@@ -174,10 +169,9 @@ const BookList = ({ getBookList, books, setBooks }) => {
                       </button>
                     </div>
                   </td>
-
-                  {/* Display more data as needed */}
                 </tr>
-              ))}
+              ))
+           :null}
         </tbody>
       </table>
 

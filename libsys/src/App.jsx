@@ -20,7 +20,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState("user");
   const [userData, setUserData] = useState({});
-
+  const [books, setBooks] = useState([]);
  
 
   return (
@@ -41,7 +41,7 @@ function App() {
           <Route path="/reserve-management" element={<ReservationManagementPage />} />
           <Route path="/loan-management" element={<LoanManagementPage />} />
           <Route path="/report" element={<ReportManagementPage />} />
-          <Route path="/book-list" element={<BookList />} />
+          <Route path="/book-list" element={<BookList books={books} setBooks={setBooks}/>} />
         </Routes>
       </div>
     </>
