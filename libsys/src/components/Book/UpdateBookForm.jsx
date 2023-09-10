@@ -13,10 +13,9 @@ const UpdateBookForm = ({ bookData, onUpdateBook }) => {
     bookId: '',
   });
 
-  // Use useEffect to update the form fields when bookData changes
   useEffect(() => {
     if (bookData) {
-      // Update the form fields with bookData if it exists
+      
       setBook({
         title: bookData.title || '',
         author: bookData.author || '',
@@ -38,11 +37,8 @@ const UpdateBookForm = ({ bookData, onUpdateBook }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform validation if needed
-
-    // Handle the update logic here using the book data in the "book" state
+    
       onUpdateBook(book);
-    // Clear the form after updating the book
     setBook({
       title: '',
       author: '',

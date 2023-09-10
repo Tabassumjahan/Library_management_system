@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./BookList.css";
+
 import BookSearch from "./BookSearch";
 import Navbar from "./Navbar";
 
@@ -8,9 +8,8 @@ const BookList = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    const apiUrl = "http://localhost:8083/api/books"; // Update with your API URL
+    const apiUrl = "http://localhost:8083/api/books"; 
 
-    // Fetch the list of books from the API
     fetch(apiUrl)
       .then((response) => {
         if (!response.ok) {
@@ -40,7 +39,6 @@ const BookList = () => {
       );
     });
 
-    // Update the books state with the filtered results
     setBooks(filteredBooks);
   };
   return (
@@ -52,7 +50,7 @@ const BookList = () => {
       <BookSearch onSearch={handleSearch} />
       <div className="space-after-search"></div>
 
-      {/* Pass the search function */}
+      
 
       <table className="table table-striped container">
         <thead>
@@ -66,7 +64,7 @@ const BookList = () => {
             <th scope="col">PublicationDate</th>
             <th scope="col">Quantity</th>
             <th scope="col">Available Quantity</th>
-            {/* Add more columns as needed */}
+            
           </tr>
         </thead>
         <tbody>
@@ -95,8 +93,6 @@ const BookList = () => {
                   <td>{book.publicationDate}</td>
                   <td>{book.quantity}</td>
                   <td>{book.availableQuantity}</td>
-
-                  {/* Display more data as needed */}
                 </tr>
               ))}
         </tbody>

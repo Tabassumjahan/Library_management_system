@@ -96,7 +96,7 @@ const AddUserForm = ({ onAddUser }) => {
             </div>
             </div>
         </form>
-    {message && <p className="success-message">{message}</p>} {/* Display the message if it's set */}
+    {message && <p className="success-message">{message}</p>} 
       </div>
     </div>
   );

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './LoanManagement.css';
+
 function LoanManagement() {
-  // State to manage loan data
   const [loans, setLoans] = useState([]);
-  // State for form inputs
+ 
   const [loanData, setLoanData] = useState({
     userId: '',
     bookId: '',
@@ -12,25 +11,19 @@ function LoanManagement() {
   });
 
   useEffect(() => {
-    // Fetch loan data from your backend API here and set it using setLoans
-    // Example API call:
     fetch('http://localhost:8083/api/loanmanagement')
        .then(response => response.json())
        .then(data => setLoans(data))
        .catch(error => console.error('Error fetching loans:', error));
   }, []);
 
-  // Handle form input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setLoanData({ ...loanData, [name]: value });
   };
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Send a POST request to your backend to create a new loan
-    // Example API call:
     fetch('http://localhost:8083/api/loanmanagement', {
        method: 'POST',
        headers: {
