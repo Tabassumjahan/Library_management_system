@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './UpdateBookForm.css';
 
 const UpdateBookForm = ({ bookData, onUpdateBook }) => {
   const [book, setBook] = useState({
@@ -58,75 +57,85 @@ const UpdateBookForm = ({ bookData, onUpdateBook }) => {
   };
 
   return (
-    <div>
+    <div className="container d-flex justify-content-center align-items-center h-100 col">
+      <div className="" style={{ width: "50%" }}>
       <h2>Update Book</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="bookId">Book ID:</label>
+        <form onSubmit={handleSubmit}>
+        <div className="center row g-3 container ms-4 mt-5">
+        <div className=" mb-3 col">
+          <label className="form-label" htmlFor="bookId">Book ID:</label>
           <input
             type="text"
             id="bookId"
             name="bookId"
+            className= "form-control"
             value={book.bookId}
             onChange={handleChange}
             required
           />
         </div>
-          <div>
-                  <label htmlFor="title">Title:</label>
-                  <input
+          <div className=" mb-3 col">
+            <label className="form-label" htmlFor="title">Title:</label>
+            <input
             type="text"
             id="title"
             name="title"
+            className= "form-control"
             value={book.title}
             onChange={handleChange}
             required
           />
-              </div>
-              <div>
-          <label htmlFor="author">Author:</label>
+          </div>
+          <div >
+          <label className="form-label" htmlFor="author">Author:</label>
           <input
             type="text"
             id="author"
             name="author"
+            className= "form-control"
             value={book.author}
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label htmlFor="subject">Subject:</label>
+        <div className=" mb-3 col">
+          <label  className="form-label" htmlFor="subject">Subject:</label>
           <input
             type="text"
             id="subject"
             name="subject"
+            className= "form-control"
             value={book.subject}
             onChange={handleChange}
           />
-              </div>
-              <div>
-          <label htmlFor="isbn">ISBN:</label>
+          </div>
+          <div className=" mb-3 col">
+          <label className="form-label" htmlFor="isbn">ISBN:</label>
           <input
             type="text"
             id="isbn"
             name="isbn"
+            className= "form-control"
             value={book.isbn}
             onChange={handleChange}
           />
         </div>
         <div>
-          <label htmlFor="publisher">Publisher:</label>
+          <label className="form-label" htmlFor="publisher">Publisher:</label>
           <input
             type="text"
             id="publisher"
             name="publisher"
+            className= "form-control"
             value={book.publisher}
             onChange={handleChange}
           />
-        </div> 
-              <br></br>
-        {/* Your input fields here */}
-        <button type="submit" className="update-button1">Update Book</button>
-      </form>
+          </div> 
+          </div>
+        <div className="button-container mt-3 text-center">
+        <button type="submit" className="btn btn-primary">Update Book</button>
+        </div>
+        </form>
+      </div>
     </div>
   );
 };

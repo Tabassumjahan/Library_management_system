@@ -72,9 +72,9 @@ const UserManagementPage = () => {
       <Navbar />
       
       <h2 className="text-center mt-3">User Management</h2>
-       <div className="col text-center w-80 "> 
+       <div className="col text-center container w-80 "> 
           <img
-            src="https://img.freepik.com/free-photo/open-book-with-character-arrangement_23-2150264096.jpg?size=626&ext=jpg&ga=GA1.2.1158874087.1694090533&semt=ais" class="img-fluid2" ></img>
+            src="https://img.freepik.com/free-photo/close-up-colorful-books-pile_23-2149082152.jpg?w=1380&t=st=1694347661~exp=1694348261~hmac=bd37b3859bd3ebd19446555b52c155f3527d8890306070d35ebad8140e4ccbda" class="img-fluid2" ></img>
       </div>
       <AddUserForm addUser={addUser} />
       {editingUser && (

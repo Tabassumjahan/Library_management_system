@@ -5,6 +5,7 @@ import { userLogin } from "../../modules/UserModule";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../redux/userSlice";
+import './LoginPage.css'
 
 function LoginPage({ setUserRole, setIsLoggedIn }) {
   const user = localStorage.getItem("User");

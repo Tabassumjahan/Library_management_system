@@ -55,7 +55,7 @@ function LoanManagement() {
     <div className="LoanBook mt-4 center row g-3 container ms-4">
     <div className="d-flex justify-content-center align-items-center flex-column">
       <div className="" style={{ width: "50%" }}>
-      <h2 className="text-center border-bottom w-80">Loan Management</h2>
+      <h3 className="text-center border-bottom w-80">Loan</h3>
           <form onSubmit={handleSubmit}>
          <div className="LoanBook mt-4 center row g-3 container ms-4">
 
@@ -104,7 +104,7 @@ function LoanManagement() {
           />
               </div>
               <div className="button-container mt-3 text-center">
-                <button type="submit">Create Loan</button>
+                <button type="submit" className="btn btn-primary">Create Loan</button>
                 </div>
               </div>
           </form>

@@ -4,6 +4,7 @@ import BookSearch from "./BookSearch";
 import Navbar from "./Navbar";
 
 const BookList = () => {
+  const user = JSON.parse (localStorage.getItem("User"))
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -29,9 +30,7 @@ const BookList = () => {
   const [searchResults, setSearchResults] = useState([]);
 
   const handleSearch = (query) => {
-    // Implement your search logic here
-    // You can update the book list based on the search query
-    // For example, you can filter the books array based on the query
+   
     const filteredBooks = books.filter((book) => {
       const lowerCaseQuery = query.toLowerCase();
       return (
@@ -47,8 +46,8 @@ const BookList = () => {
   return (
     
     <div className="BookList mt-4">
-      <Navbar />
-      <h2 className="text-center border-bottom w-80">Book List</h2>
+      {user.email != "admin@123" && <Navbar /> }
+      <h2 className="text-center mt-4 my-4">BOOK LIST </h2>
       <div className="d-flex justify-content-center align-items-center flex-column"></div>
       <BookSearch onSearch={handleSearch} />
       <div className="space-after-search"></div>

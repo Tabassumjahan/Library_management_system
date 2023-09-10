@@ -2,16 +2,16 @@ import React from "react";
 import Reports from "../components/Reports";
 import BookList from "../components/BookList";
 import Navbar from "../components/Navbar";
-
+import './ReportManagement.css'
 const ReportManagementPage = () => {
   // Implement your borrowing reports page content here
   return (
     <div>
       <Navbar />
-      <h2 className="text-center mt-3"> Report Management</h2>
-      <div className="col text-center w-80 "> 
+      <h2 className="text-center mt-3 mb-3"> Report Management</h2>
+      <div className="col text-center w-80 container"> 
           <img
-            src="https://t4.ftcdn.net/jpg/04/14/53/49/240_F_414534901_q9mkwlwkYZeYT01BG68ketqi0YWYetKL.jpg" class="img-fluid w-100 h-60" ></img>
+            src="https://img.freepik.com/free-photo/library-with-round-window-bookcase-with-bookcase-left_188544-9023.jpg?w=1380&t=st=1694346591~exp=1694347191~hmac=47ed8d9fec277aea54f889733e2cbacac131ef2f902198c4d0870c4a8647fa2c" class="img-fluid5"></img>
       </div>
       <Reports />
       {/* Add your borrowing reports components, tables, and reports */}

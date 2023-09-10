@@ -5,10 +5,10 @@ const BorrowBookForm = ({ borrowBook }) => {
     const [formData, setFormData] = useState({ 
     userId: '',
     bookId: '',
-    borrowDate: '', // Add borrow date field
-    dueDate: '',    // Add due date field
-    returnDate: '', // Add return date field
-    status: '', // Default status to Active
+    borrowDate: '', 
+    dueDate: '',    
+    returnDate: '', 
+    status: '', 
   });
 
   const handleChange = (e) => {
@@ -22,89 +22,95 @@ const BorrowBookForm = ({ borrowBook }) => {
       setFormData({
       userId: '',
       bookId: '',
-      borrowDate: '', // Clear date fields
+      borrowDate: '', 
       dueDate: '',
       returnDate: '',
-      status: '', // Reset status to Active
+      status: '', 
     });
-      // Clear the form fields
   };
 
   return (
-    <div>
+    <div className="container d-flex justify-content-center align-items-center h-100 col">
+        <div className="" style={{ width: "50%" }}>
       
-      <form onSubmit={handleSubmit}>
-
-          <div>
-          <label className="custom-label">User ID:</label>
+        <form onSubmit={handleSubmit}>
+          <div className="center row g-3 container ms-4 mt-3" >
+          <div className=" mb-3 col">
+          <label className="form-label">User ID:</label>
           <input
             type="text"
             name="userId"
+            className= "form-control"
             value={formData.userId}
             onChange={handleChange}
             required
           />
               </div>
-              <br></br>
-        <div>
-          <label className="custom-label">Book ID:</label>
+             
+        <div className=" mb-3 col">
+          <label className="form-label">Book ID:</label>
           <input
             type="text"
             name="bookId"
+            className= "form-control"
             value={formData.bookId}
             onChange={handleChange}
             required
           />
               </div>
               <div>
-          <label className="custom-label">Borrow Date:</label>
+          <label className="form-label">Borrow Date:</label>
           <input
             type="date"
             name="borrowDate"
+            className= "form-control"
             value={formData.borrowDate}
             onChange={handleChange}
             required
           />
         </div>
-        {/* Add Due Date field */}
-        <div>
-          <label className="custom-label">Due Date:</label>
+        <div className=" mb-3 col">
+          <label className="form-label">Due Date:</label>
           <input
             type="date"
             name="dueDate"
+            className= "form-control"
             value={formData.dueDate}
             onChange={handleChange}
               required
           />
         </div>
-        {/* Add Return Date field */}
-        <div>
-          <label className="custom-label">Return Date:</label>
+        <div className=" mb-3 col">
+          <label className="form-label">Return Date:</label>
           <input
             type="date"
             name="returnDate"
+            className= "form-control"
             value={formData.returnDate}
             onChange={handleChange}
           />
         </div>
-        {/* Add Status field */}
         <div className="status-label">
-          <label className="custom-label">Status:</label>
+          <label className="form-label">Status:</label>
           <select
             name="status"
             value={formData.status}
             onChange={handleChange}
+            className= "form-control"
             required
             style={{ width: 'auto' }} 
             >
             <option value="Borrowed"> Borrowed</option>
             <option value="Returned">Returned</option>          
                   </select>
+          </div>
+          </div>
+          <div className="button-container mt-3 text-center">
+            <button type="submit" className="btn btn-primary">Borrow/Return Book</button>
             </div>
-              <br></br>
-        <button type="submit">Borrow/Return Book</button>
       </form>
-    </div>
+      </div>
+      </div>
   );
 };
 

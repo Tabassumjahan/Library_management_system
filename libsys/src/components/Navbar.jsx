@@ -9,8 +9,6 @@ function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
-
-
   const handleLogout = () => {
     dispatch(setUser(null));
     localStorage.removeItem("User");
@@ -104,6 +102,14 @@ function Navbar() {
                           className="dropdown-item link-underline-opacity-0"
                         >
                           Loan Management
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to={"/reserve-management"}
+                          className="dropdown-item link-underline-opacity-0"
+                        >
+                          Reserve Management
                         </Link>
                       </li>
                     </ul>

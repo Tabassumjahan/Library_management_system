@@ -49,7 +49,7 @@ const AddUserForm = ({ onAddUser }) => {
         <div className="mb-3 col mt-3">
           <label className ="form-label">First Name : </label>
           <input
-            type="text"
+            type="text" 
             name="firstName"
             value={user.firstName}
             onChange={(e) => setUser({ ...user, firstName: e.target.value })}
@@ -77,10 +77,22 @@ const AddUserForm = ({ onAddUser }) => {
             onChange={(e) => setUser({ ...user, email: e.target.value })}
             required
             className="form-control"
-          />
+              />
+            </div>
+            <div>
+          <label className="form-label"> Password :</label>
+          <input
+            type="password"
+            name="password" 
+            placeholder="********"
+            value={user.password}
+            onChange={(e) => setUser({ ...user, password: e.target.value })}
+            required
+            className="form-control"
+              />
           </div>
           <div className="button-container mt-3 text-center">
-            <button type="submit" className="add-user-button ">Add User</button>
+            <button type="submit" className="btn btn-primary ">Add User</button>
             </div>
             </div>
         </form>

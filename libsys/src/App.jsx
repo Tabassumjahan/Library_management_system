@@ -41,6 +41,7 @@ function App() {
             path="/borrow-management"
             element={<BorrowingManagementPage />}
           />
+          <Route path="/reserve-management" element={<ReservationManagementPage />} />
           <Route path="/loan-management" element={<LoanManagementPage />} />
           <Route path="/report" element={<ReportManagementPage />} />
           <Route path="/book-list" element={<BookList />} />

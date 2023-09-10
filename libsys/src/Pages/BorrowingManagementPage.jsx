@@ -4,31 +4,27 @@ import BorrowBookForm from '../components/Borrowing/BorrowingBookForm';
 import BookList from '../components/BookList';
 import BorrowingTable from '../components/BorrowingTable';
 import Navbar from '../components/Navbar';
+import './BorrowingManagementPage.css'
+
 const BorrowingManagementPage = () => {
     const [borrowedBooks, setBorrowedBooks] = useState([]);
-    // Define your borrowBook and returnBook functions here.
-    
-     // Function to fetch borrowed books data from the API
-  // The empty dependency array ensures this effect runs only once when the component mounts
-
   const borrowBook = async (formData) => {
     try {
-      // Send a POST request to your backend API to record the borrowing transaction.
+      
       const response = await fetch('http://localhost:8083/api/borrowings', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData), // Send the formData to the backend.
+        body: JSON.stringify(formData), 
       });
 
         if (response.ok) {
-            // The book was successfully borrowed.
+            
             alert('Book borrowed successfully!');
             
             setBorrowedBooks([...borrowedBooks, formData]);
       } else {
-        // Handle errors, e.g., book not available, user not found, etc.
         alert('Error borrowing book. Please try again.');
       }
     } catch (error) {
@@ -42,7 +38,12 @@ const BorrowingManagementPage = () => {
     <div>
       <Navbar />
       <div className="container mt-3">
-      <h2 className="text-center mt-3 border-bottom w-70">Borrowing Management Page</h2>
+        <h2 className="text-center mt-3 border-bottom w-70">Borrowing Management Page</h2>
+        <div className="col text-center "> 
+          <img
+            src="https://img.freepik.com/free-photo/stack-books-black-wooden-table_93675-135412.jpg?w=996&t=st=1694350233~exp=1694350833~hmac=4331282ff50f00f9eaa48888a9db23a09e6d84d69dca0dec1c34672a144b0af8" class="img-fluid8"></img>
+        </div>
+        <h3 className="text-center mt-5 "> Borrow Book</h3>
         <BorrowBookForm borrowBook={borrowBook} />
       </div>  
     <BorrowingTable borrowedBooks={borrowedBooks} />

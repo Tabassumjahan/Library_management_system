@@ -15,12 +15,12 @@ const BorrowingTable = () => {
       });
   }, []);
   return (
-    <div className ="container mt-5">
-      <h3 className="text-center mt-4 border-bottom w-70">Borrowed Books</h3>
+    <div className ="container mt-5 mb-4">
+      <h3 className="text-center mt-4  mb-3border-bottom w-70">Borrowed Books</h3>
       <table className = "table table-striped" >
         <thead>
           <tr>
-           <th scope="col">Borrowing ID</th> 
+          <th scope="col">Borrowing ID</th> 
             <th scope="col">User ID</th>
             <th scope="col">Book ID</th>
             <th scope="col">Borrow Date</th>
@@ -30,8 +30,8 @@ const BorrowingTable = () => {
           </tr>
         </thead>
         <tbody>
-         {borrowedBooks.map((borrowing, index) => (
-             <tr key={index}>
+    {borrowedBooks.map((borrowing, index) => (
+    <tr key={index}>
     <td>{borrowing.borrowingID}</td>
     <td>{borrowing.user ? borrowing.user.id : 'User ID not available'}</td>
     <td>{borrowing.book ? borrowing.book.id : 'Book ID not available'}</td>

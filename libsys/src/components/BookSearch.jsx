@@ -13,20 +13,22 @@ function BookSearch({ onSearch }) {
   };
 
   return (
-    <div className="book-search row g-2">
-      <h4>Book Search</h4>
+    <div className="container">
       <form onSubmit={handleSubmit}>
         <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"></label>
         <div class="col-sm-8">
-        <div className = "input-group mb-2">
+        <div className = "form-label mb-2 ">
         <input
           type="text"
-          placeholder="Search by title/subject"
+              placeholder="Search by title/subject"
+              className="form-control me-3"
           value={searchQuery}
           onChange={handleSearchChange}
-        />
+            />
+            <div className="container mt-2">
         <button type= "submit" className="btn btn-primary btn-sm" >Search</button>
-          </div>
+         </div>
+            </div>
           </div>
       </form>
     </div>

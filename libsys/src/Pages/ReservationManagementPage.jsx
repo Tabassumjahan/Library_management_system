@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import Reservation from '../components/Reservation';
 import BookList from '../components/BookList';
 import ReservationForm from '../components/ReservationForm';
+import Navbar from '../components/Navbar';
+import './ReservationManagementPage.css'
+
 const ReservationManagementPage = () => {
 const [reservations, setReservations] = useState([]);
    const handleReservationSubmit = (formData) => {
-    // Implement your logic for handling the reservation submission here
      console.log('Form Data:', formData);
      
      fetch('http://localhost:8083/api/reservations', {
@@ -17,22 +19,22 @@ const [reservations, setReservations] = useState([]);
     })
       .then(response => response.json())
       .then(newReservation => {
-        // Add the newly created reservation to the list
         setReservations([...reservations, newReservation]);
       })
       .catch(error => console.error('Error creating reservation:', error));
   };
-    // You can send the formData to your API or perform other actions here
-
-  // Implement your reservation management page content here
   return (
-    <div>
-          <h2>Reservation Management</h2>
-      <ReservationForm onSubmit={handleReservationSubmit} />
-          < Reservation />
-          
+    <div mb-3>
+      <Navbar />
 
-      {/* Add your reservation management components, tables, and reports */}
+      <h2 className=" text-center mt-4 mb-3">Reservation Management</h2>
+
+      <div className="col text-center container w-80 "> 
+          <img
+            src="https://img.freepik.com/free-photo/creative-assortment-with-different-books_23-2148851019.jpg?w=996&t=st=1694352294~exp=1694352894~hmac=eb2118a2b9fe66193dcd89bf91b81e92e54aeb732ffd746574152aa167f802ea" class="img-fluid20" ></img>
+      </div>
+      <ReservationForm onSubmit={handleReservationSubmit} />
+      < Reservation />
     </div>
   );
 };

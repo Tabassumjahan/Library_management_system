@@ -164,12 +164,12 @@ const AddBookForm = ({ onAddBook }) => {
           </div>
         </div>
         <div className="button-container mt-3 text-center">
-        <button type="submit">Add Book</button>
+        <button type="submit" className="btn btn-primary">Add Book</button>
           </div>
           
       </form>
-      <div className="text-center"> 
-        {message && <p>{message}</p>} {/* Display the message if it's set */}
+      <div className="text-center mb-4"> 
+        {message && <p>{message}</p>} 
     </div>
       </div>
       </div>

@@ -43,10 +43,9 @@ const UpdateUserForm = ({ userData, fetchAllUserData, onCancel, onUpdate, update
     });
 
       if (response.status >= 200 && response.status < 300) {
-        fetchAllUserData();
-            // Success handling
+      fetchAllUserData();
       const updatedUserData = await response.json();
-      updateUserList(updatedUserData);
+      //updateUserList(updatedUserData);
       setIsUpdateSuccess(true);
       onUpdate();
     } else {
@@ -64,7 +63,7 @@ const UpdateUserForm = ({ userData, fetchAllUserData, onCancel, onUpdate, update
       {isUpdateSuccess && (
         <div className="success-message">User updated successfully</div>
   )}
-      <form onSubmit={handleSubmit}>
+      <form>
         <div className=" center row g-3 container ms-4 mt-5">
         <div className=" mb-3 col" >
           <label for="firstName" class="form-label">First Name:</label>
@@ -112,9 +111,9 @@ const UpdateUserForm = ({ userData, fetchAllUserData, onCancel, onUpdate, update
           </div>
           </div>
 
-      <div className="button-container mt-3 text-center">
-      <button type="submit" className="update-button" class="btn btn-primary btn-sm">Update User</button>
-      <button type="button" onClick={onCancel} className="cancel-button" class="btn btn-danger btn-sm ms-2">Cancel</button>
+      <div className="button-container mt-3 text-center mb-3">
+      <button onClick={handleSubmit} className="btn btn-primary btn-sm">Update User</button>
+      <button type="button" onClick={onCancel} className="btn btn-danger btn-sm ms-2">Cancel</button>
           </div>
           
         </form>

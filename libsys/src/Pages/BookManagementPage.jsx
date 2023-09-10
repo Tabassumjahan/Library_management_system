@@ -94,10 +94,18 @@ const BookManagementPage = () => {
   return (
     <div>
       <Navbar />
+      <h2 className="container mt-3 mb-3 text-center">Book Management</h2>
+      <div className="col text-center container w-80 "> 
+          <img
+            src="https://img.freepik.com/free-photo/books-arrangement-table_23-2150264095.jpg?size=626&ext=jpg&ga=GA1.1.1158874087.1694090533&semt=ais " class="img-fluid3" ></img>
+      </div>
       <div className="container mt-3">
       <AddBookForm onAddBook={addBook} />
-      </div>
+      </div >
+
+      <div className="container mt-4" >
       <BookList books={books} onDeleteBook={handleDeleteBook} />
+      </div>
       <div className="BookList">
 
       {showUpdateForm ? (
@@ -133,8 +141,8 @@ const BookManagementPage = () => {
             </div>
           </div>
         ) : (
-          <div className="container mt-5 text-center bottom-border w-50">
-            <h2>Click to open Delete Book form</h2>
+          <div className="container mt-5 text-center bottom-border w-50 mb-4">
+            <h3>Click to open Delete Book form</h3>
             <button className="show-form-button" onClick={handleShowDeleteForm} class="btn btn-primary">
               Show Delete Book Form
             </button>
@@ -144,7 +152,7 @@ const BookManagementPage = () => {
           <div className="success-message container mt-5 text-center">{deleteSuccessMessage}</div>
         )}
         {updateSuccessMessage && (
-          <div className="success-message container mt-5 text-center">{updateSuccessMessage}</div>
+          <div className="success-message container mt-5 text-center mb-4">{updateSuccessMessage}</div>
         )}
       </div>
     </div>
