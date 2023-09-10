@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./UserPage.css";
+
 import Navbar from "../../components/Navbar";
 
 function UserPage() {
@@ -62,7 +62,6 @@ function UserPage() {
     fetch("http://localhost:8083/api/reservations")
       .then((response) => response.json())
       .then((data) => {
-        // Assuming the API returns an array of reserved books
         setReservedBooks(data);
       })
       .catch((error) => {

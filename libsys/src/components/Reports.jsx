@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "./Reports.css";
+
 function Reports() {
-  // State to manage report data
+  
   const [reports, setReports] = useState([]);
 
   useEffect(() => {
-    // Fetch report data from your backend API here and set it using setReports
-    // Example API call:
     fetch("http://localhost:8083/api/reports")
       .then((response) => response.json())
       .then((data) => setReports(data))

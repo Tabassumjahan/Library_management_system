@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./UserList.css";
+
 import UpdateUserForm from "./User/UpdateUserForm";
 import UserDelete from "./User/UserDelete";
 

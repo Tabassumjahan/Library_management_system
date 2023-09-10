@@ -1,5 +1,5 @@
 import React, { useState, useEffect }  from 'react';
-import './BorrowingTable.css'
+
 const BorrowingTable = () => {
     const [borrowedBooks, setBorrowedBooks] = useState([]);
 

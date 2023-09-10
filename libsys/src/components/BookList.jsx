@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./BookList.css";
+
 import BookSearch from "./BookSearch";
 import Navbar from "./Navbar";
 import UpdateBookForm from "./Book/UpdateBookForm";
@@ -85,7 +85,7 @@ const BookList = ({ getBookList, books, setBooks }) => {
       <BookSearch onSearch={handleSearch} />
       <div className="space-after-search"></div>
 
-      {/* Pass the search function */}
+      
 
       <table className="table table-striped container">
         <thead>

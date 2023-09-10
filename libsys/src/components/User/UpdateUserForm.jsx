@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './UpdateUserForm.css'
+
 const UpdateUserForm = ({ userData, fetchAllUserData, onCancel, onUpdate, updateUserList }) => {
   const [updatedUser, setUpdatedUser] = useState({
 
@@ -11,10 +11,9 @@ const UpdateUserForm = ({ userData, fetchAllUserData, onCancel, onUpdate, update
 
 
   const [isUpdateSuccess, setIsUpdateSuccess] = useState(false);
-  // Use useEffect to update the form fields when userData changes
+  
   useEffect(() => {
     if (userData) {
-      // Update the form fields with userData if it exists
       setUpdatedUser({
         firstName: userData.firstName || '',
         lastName: userData.lastName || '',
@@ -45,7 +44,6 @@ const UpdateUserForm = ({ userData, fetchAllUserData, onCancel, onUpdate, update
       if (response.status >= 200 && response.status < 300) {
       fetchAllUserData();
       const updatedUserData = await response.json();
-      //updateUserList(updatedUserData);
       setIsUpdateSuccess(true);
       onUpdate();
     } else {
